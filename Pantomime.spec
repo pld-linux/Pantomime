@@ -5,8 +5,9 @@ Version:	1.1.0
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=80
+Source0:	http://www.collaboration-world.com/pantomime.data/releases/Stable/%{name}-%{version}.tar.gz
 # Source0-md5:	3366a3af44327d03d81cb731da5c1971
+Patch0:		%{name}-whitespacepassword.patch
 URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel
 BuildRequires:	openssl-devel
@@ -46,6 +47,7 @@ Pliki nag³ówkowe biblioteki Pantomime.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
