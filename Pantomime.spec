@@ -1,15 +1,14 @@
 Summary:	MIME library for GNUstep
 Summary(pl):	Biblioteka MIME dla ¶rodowiska GNUstep
 Name:		Pantomime
-Version:	1.1.0
+Version:	1.1.2
 Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.collaboration-world.com/pantomime.data/releases/Stable/%{name}-%{version}.tar.gz
-# Source0-md5:	3366a3af44327d03d81cb731da5c1971
-Patch0:		%{name}-whitespacepassword.patch
+# Source0-md5:	7070473c8cf4e84945673d43a65cfca8
 URL:		http://www.collaboration-world.com/pantomime/
-BuildRequires:	gnustep-gui-devel >= 0.8.8-2
+BuildRequires:	gnustep-gui-devel >= 0.9.1
 BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,7 +46,6 @@ Pliki nag³ówkowe biblioteki Pantomime.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
