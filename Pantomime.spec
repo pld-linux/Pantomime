@@ -6,7 +6,8 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnustep.org/pub/gnustep/libs/%{name}-%{version}.tar.gz
-# Source0-md5:	-
+# Source0-md5:	bb468e335dd3be2523f42a98d5c9ddf1
+URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel
 BuildRequires:	openssl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
