@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka MIME dla ¶rodowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
 %define cvs 20040729
-Release:	4.%{cvs}.1
+Release:	4.%{cvs}.2
 License:	LGPL
 Group:		Libraries
 Source0:	%{name}-cvs-%{cvs}.tar.gz
