@@ -24,10 +24,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %endif
 
 %description
-MIME library for GNUstep.
+MIME library for GNUstep. This framework supports the major mail
+protocols: POP3, IMAP, and SMTP.
 
 %description -l pl
-Biblioteka MIME dla ¶rodowiska GNUstep.
+Biblioteka MIME dla ¶rodowiska GNUstep. Ten szkielet obs³uguje g³ówne
+protoko³y pocztowe: POP3, IMAP i SMTP.
 
 %package devel
 Summary:	Header files for Pantomime library
