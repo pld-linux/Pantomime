@@ -9,7 +9,7 @@ Source0:	http://www.collaboration-world.com/pantomime.data/releases/Stable/%{nam
 # Source0-md5:	7070473c8cf4e84945673d43a65cfca8
 URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel >= 0.9.1
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/lib/GNUstep
