@@ -2,7 +2,7 @@ Summary:	MIME library for GNUstep
 Summary(pl):	Biblioteka MIME dla ¶rodowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.collaboration-world.com/pantomime.data/releases/Stable/%{name}-%{version}.tar.gz
@@ -12,7 +12,7 @@ BuildRequires:	gnustep-gui-devel >= 0.9.1
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/lib/GNUstep
+%define         _prefix         /usr/%{_lib}/GNUstep
 
 %define		libcombo	gnu-gnu-gnu
 %define		gsos		linux-gnu
@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gscpu		ix86
 %else
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
-%define		gscpu		%{_target_cpu}
+%define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
 %endif
 
 %description
@@ -35,7 +35,7 @@ protoko³y pocztowe: POP3, IMAP i SMTP.
 Summary:	Header files for Pantomime library
 Summary(pl):	Pliki nag³ówkowe biblioteki Pantomime
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gnustep-gui-devel >= 0.8.8-2
 
 %description devel
