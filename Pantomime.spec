@@ -2,11 +2,12 @@ Summary:	MIME library for GNUstep
 Summary(pl):	Biblioteka MIME dla ¶rodowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
-Release:	3
+%define cvs 20040729
+Release:	4.%{cvs}.1
 License:	LGPL
 Group:		Libraries
-Source0:	http://www.collaboration-world.com/pantomime.data/releases/Stable/%{name}-%{version}.tar.gz
-# Source0-md5:	7070473c8cf4e84945673d43a65cfca8
+Source0:	%{name}-cvs-%{cvs}.tar.gz
+# Source0-md5:	2aa6d2c62181e194c7bf632b720f3fc6
 URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel >= 0.9.1
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -53,18 +54,11 @@ Pliki nag³ówkowe biblioteki Pantomime.
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
-%{__make} -C Bundles/SSL \
-	OPTFLAG="%{rpmcflags} -I../../Headers" \
-	messages=yes
-
 %install
 rm -rf $RPM_BUILD_ROOT
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
-
-%{__make} install -C Bundles/SSL \
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
 
 %clean
@@ -77,11 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog README TODO
 %{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so.*
-
-%dir %{_prefix}/System/Library/Pantomime
-%dir %{_prefix}/System/Library/Pantomime/TCPSSLConnection.bundle
-%{_prefix}/System/Library/Pantomime/TCPSSLConnection.bundle/Resources
-%attr(755,root,root) %{_prefix}/System/Library/Pantomime/TCPSSLConnection.bundle/%{gscpu}
 
 %files devel
 %defattr(644,root,root,755)
