@@ -3,7 +3,7 @@ Summary(pl):	Biblioteka MIME dla ¶rodowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
 %define cvs 20040729
-Release:	4.%{cvs}.2
+Release:	5.%{cvs}.2
 License:	LGPL
 Group:		Libraries
 Source0:	%{name}-cvs-%{cvs}.tar.gz
@@ -38,6 +38,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki Pantomime
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnustep-gui-devel >= 0.8.8-2
+Requires:	openssl-devel >= 0.9.7d
 
 %description devel
 Header files for Pantomime library.
