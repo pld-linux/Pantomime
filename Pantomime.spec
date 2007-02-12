@@ -1,5 +1,5 @@
 Summary:	MIME library for GNUstep
-Summary(pl):	Biblioteka MIME dla ∂rodowiska GNUstep
+Summary(pl.UTF-8):   Biblioteka MIME dla ≈õrodowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
 %define cvs 20040729
@@ -28,13 +28,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 MIME library for GNUstep. This framework supports the major mail
 protocols: POP3, IMAP, and SMTP.
 
-%description -l pl
-Biblioteka MIME dla ∂rodowiska GNUstep. Ten szkielet obs≥uguje g≥Ûwne
-protoko≥y pocztowe: POP3, IMAP i SMTP.
+%description -l pl.UTF-8
+Biblioteka MIME dla ≈õrodowiska GNUstep. Ten szkielet obs≈Çuguje g≈Ç√≥wne
+protoko≈Çy pocztowe: POP3, IMAP i SMTP.
 
 %package devel
 Summary:	Header files for Pantomime library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki Pantomime
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki Pantomime
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnustep-gui-devel >= 0.8.8-2
@@ -43,8 +43,8 @@ Requires:	openssl-devel >= 0.9.7d
 %description devel
 Header files for Pantomime library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki Pantomime.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki Pantomime.
 
 %prep
 %setup -q -n %{name}
