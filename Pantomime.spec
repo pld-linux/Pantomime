@@ -1,5 +1,5 @@
 Summary:	MIME library for GNUstep
-Summary(pl.UTF-8):   Biblioteka MIME dla środowiska GNUstep
+Summary(pl.UTF-8):	Biblioteka MIME dla środowiska GNUstep
 Name:		Pantomime
 Version:	1.1.2
 %define cvs 20040729
@@ -34,7 +34,7 @@ protokoły pocztowe: POP3, IMAP i SMTP.
 
 %package devel
 Summary:	Header files for Pantomime library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki Pantomime
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Pantomime
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnustep-gui-devel >= 0.8.8-2
