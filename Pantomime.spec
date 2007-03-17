@@ -1,28 +1,19 @@
 Summary:	MIME library for GNUstep
 Summary(pl.UTF-8):	Biblioteka MIME dla środowiska GNUstep
 Name:		Pantomime
-Version:	1.1.2
-%define cvs 20040729
-Release:	5.%{cvs}.2
+Version:	1.2.0
+%define bver	pre3
+Release:	0.%{bver}.1
 License:	LGPL
 Group:		Libraries
-Source0:	%{name}-cvs-%{cvs}.tar.gz
-# Source0-md5:	2aa6d2c62181e194c7bf632b720f3fc6
+Source0:	http://www.collaboration-world.com/cgi-bin/project/download.cgi/%{name}-%{version}%{bver}.tar.gz?rid=109
+# Source0-md5:	06ee16477aacf7c5031936997723c791
 URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel >= 0.9.1
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/%{_lib}/GNUstep
-
-%define		libcombo	gnu-gnu-gnu
-%define		gsos		linux-gnu
-%ifarch %{ix86}
-%define		gscpu		ix86
-%else
-# also s/alpha.*/alpha/, but we use only "alpha" arch for now
-%define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
-%endif
 
 %description
 MIME library for GNUstep. This framework supports the major mail
@@ -70,10 +61,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README TODO
-%{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so.*
+%doc ChangeLog Documentation/{AUTHORS,README,TODO}
+%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Headers
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Resources
+%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions
+%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A
+%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/libPantomime.so*
+%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Pantomime
+%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/*.plist
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/English.lproj
+%lang(de) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/German.lproj
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Current
+%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources
+%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources/English.lproj
+%lang(de) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources/German.lproj
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/lib*.so.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_prefix}/System/Library/Headers/%{libcombo}/Pantomime
-%{_prefix}/System/Library/Libraries/%{gscpu}/%{gsos}/%{libcombo}/lib*.so
+%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Headers
+%{_prefix}/System/Library/Headers/Pantomime
+%attr(755,root,root) %{_prefix}/System/Library/Libraries/lib*.so
