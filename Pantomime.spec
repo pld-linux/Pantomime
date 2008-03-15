@@ -1,8 +1,8 @@
+%define bver	pre3
 Summary:	MIME library for GNUstep
 Summary(pl.UTF-8):	Biblioteka MIME dla środowiska GNUstep
 Name:		Pantomime
 Version:	1.2.0
-%define bver	pre3
 Release:	0.%{bver}.1
 License:	LGPL
 Group:		Libraries
@@ -12,8 +12,6 @@ URL:		http://www.collaboration-world.com/pantomime/
 BuildRequires:	gnustep-gui-devel >= 0.9.1
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _prefix         /usr/%{_lib}/GNUstep
 
 %description
 MIME library for GNUstep. This framework supports the major mail
@@ -41,17 +39,19 @@ Pliki nagłówkowe biblioteki Pantomime.
 %setup -q -n %{name}
 
 %build
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+export GNUSTEP_MAKEFILES=%{_datadir}/GNUstep/Makefiles
+export GNUSTEP_FLATTENED=yes
 %{__make} \
-	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
 %install
 rm -rf $RPM_BUILD_ROOT
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+export GNUSTEP_MAKEFILES=%{_datadir}/GNUstep/Makefiles
+export GNUSTEP_FLATTENED=yes
 
 %{__make} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
+	GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -62,25 +62,33 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog Documentation/{AUTHORS,README,TODO}
-%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Headers
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Resources
-%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions
-%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A
-%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/libPantomime.so*
-%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Pantomime
-%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/*.plist
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/English.lproj
-%lang(de) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Resources/German.lproj
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Current
-%dir %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources
-%{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources/English.lproj
-%lang(de) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/Resources/German.lproj
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/lib*.so.*
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Pantomime
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Resources
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current
+#%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current/Pantomime
+#%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current/Resources
+#%attr(755,root,root) %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current/libPantomime.so.1.2.0
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/Resources
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/Pantomime
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/libPantomime.so
+%attr(755,root,root) %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/libPantomime.so.1.2
+%attr(755,root,root) %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/libPantomime.so.1.2.0
+#%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Resources/English.lproj/Localizable.strings
+#%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Resources/German.lproj/Localizable.strings
+%attr(755,root,root)    %{_libdir}/libPantomime.so.1.2.0
+
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_prefix}/System/Library/Frameworks/Pantomime.framework/Versions/A/Headers
-%{_prefix}/System/Library/Headers/Pantomime
-%attr(755,root,root) %{_prefix}/System/Library/Libraries/lib*.so
+%{_includedir}/Pantomime
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Headers
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/Headers
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/Headers/*.h
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/1.2/Headers/CWIMAPCacheManager.h
+%{_libdir}/libPantomime.so
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/libPantomime.so
+%{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current/libPantomime.so
+%dir %{_libdir}/GNUstep/Frameworks/Pantomime.framework/Versions/Current/Headers
