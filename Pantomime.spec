@@ -1,3 +1,4 @@
+# TODO: optflags
 %define bver	pre3
 Summary:	MIME library for GNUstep
 Summary(pl.UTF-8):	Biblioteka MIME dla środowiska GNUstep
